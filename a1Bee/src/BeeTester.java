@@ -30,5 +30,35 @@ public class BeeTester {
 		assertEquals(null,b2.getDad());
 		assertEquals(0,b2.getNumChildren());
 	}
+	
+	@Test
+	public void testSetterMethods1(){
+		/* Create new instances of Bee */
+		Bee child1= new Bee("Johnny Girl", 'F', 2004, 4);
+		Bee child2= new Bee("Johnny Boy", 'M', 2046, 1);
+		Bee father1= new Bee("Paco", 'M', 2003, 4);
+		Bee mother1= new Bee("Carmen", 'F', 2001, 6);
+		
+		/* Use setter methods. 
+		 * child1 and child2 share the same mother, 
+		 * but child2's father is unknown 
+		 */
+		child1.addMom(mother1);
+		child1.addDad(father1);
+		child2.addMom(mother1);
+		
+		/* Test for expected child-parent relationships */
+		assertEquals(mother1,child1.getMom());
+		assertEquals(mother1,child2.getMom());
+		assertEquals(father1,child1.getDad());
+		assertEquals(null,child2.getDad());
+		
+		/* Test for expected number of children */
+		assertEquals(2,mother1.getNumChildren());
+		assertEquals(1,father1.getNumChildren());
+		assertEquals(0,child1.getNumChildren());
+		assertEquals(0,child2.getNumChildren());
+				
+	}
 
 }

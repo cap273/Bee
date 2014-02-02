@@ -83,5 +83,25 @@ public class Bee {
     	return numChildren;
     }
 
-
+    /** Add e as this Bee's mother.
+     * Precondition: this Bee's mother is unknown and e is female.
+     */
+    public void addMom(Bee e){
+    	assert mother == null; // Check that this Bee's mother is unknown
+    	assert e.isMale() == false; //Check that e is female.
+    	
+    	mother= e; // Set e as the mother of this Bee.
+    	e.numChildren= e.numChildren + 1; // Number of children of e increases by 1
+    }
+    
+    /** Add e as this Bee's father.
+     * Precondition: this Bee's father is unknown and e is male.
+     */
+    public void addDad(Bee e){
+    	assert father == null; // Check that this Bee's father is unknown
+    	assert e.isMale() == true; //Check that e is male.
+    	
+    	father= e; // Set e as the father of this Bee.
+    	e.numChildren= e.numChildren + 1; // Number of children of e increases by 1
+    }
 }
