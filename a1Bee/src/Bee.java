@@ -104,4 +104,42 @@ public class Bee {
     	father= e; // Set e as the father of this Bee.
     	e.numChildren= e.numChildren + 1; // Number of children of e increases by 1
     }
+    
+    /** Constructor: a male Bee with nickname n, hatch year y, 
+     * hatch month m, and mother ma.
+     * Precondition: n has at least 1 character, y>=2000, m is in 1..12, 
+     * and ma is a female.
+     */
+    public Bee(String n, int y, int m, Bee ma){
+    	assert n.length()>0; // Length of string n is greater than 0
+        assert y >= 2000;
+        assert 1 <= m && m <= 12;
+        assert ma.isMale() == false;
+        nickname= n;
+        hatchYear= y;
+        hatchMonth= m;
+        gender= 'M'; // Set gender of bee to be male.
+        /* Add only mother to this Bee */
+        addMom(ma);
+    }
+    
+    /** Constructor: a female Bee with nickname n, hatch year y, 
+     * hatch month m, mother ma, and father pa.
+     * Precondition: n has at least 1 character, y>=2000, m is in 1..12, 
+     * ma is a female and pa is a male.
+     */
+    public Bee(String n, int y, int m, Bee ma, Bee pa){
+    	assert n.length()>0; // Length of string n is greater than 0
+        assert y >= 2000;
+        assert 1 <= m && m <= 12;
+        assert ma.isMale() == false;
+        assert pa.isMale() == true;
+        nickname= n;
+        hatchYear= y;
+        hatchMonth= m;
+        gender= 'F'; // Set gender of bee to be female.
+        /* Add father and mother to this Bee */
+        addMom(ma);
+        addDad(pa);
+    }
 }
