@@ -142,4 +142,29 @@ public class Bee {
         addMom(ma);
         addDad(pa);
     }
+    
+    /** Return the value of "This Bee is younger than e" *
+     * Precondition: e is not null. *
+     */
+    public boolean isYounger(Bee e){
+    	assert e != null;
+    	return hatchYear > e.getYear() || (hatchYear == e.getYear() && hatchMonth > e.getMonth());
+    }
+    
+    
+    /** Return the value of "this Bee and e are siblings." *
+     * Note: if e is null, they can't be siblings, so false is returned.
+     */
+    public boolean isSibling(Bee e){
+    	/* Boolean procedure: Return TRUE IFF:
+    	 * 1) e is not null, AND
+    	 * 2) this bee is not the same bee as e, AND
+    	 * 3) EITHER this bee and e share the same non-null father
+    	 * 4) OR this bee and e share the same non-null mother
+    	 */
+    	return (e != null) && (this != e) &&
+    			((father != null) && (father == e.getDad()) ||
+    			(mother != null) && (mother == e.getMom()));
+    }
+        
 }

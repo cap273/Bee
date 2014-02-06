@@ -99,7 +99,48 @@ public class BeeTester {
 		/* Make sure that the number of children of parents (mom1 and dad1) *
 		 * are correct */
 		assertEquals(2, mom1.getNumChildren());
-		assertEquals(1, dad1.getNumChildren());
+		assertEquals(1, dad1.getNumChildren());	
+	}
+	
+	@Test
+	public void testYoungerAndSibling(){
+		/* Make some bees */
+		Bee mom1= new Bee("Mom #1", 'F', 2008, 1);
+		Bee dad1= new Bee("Dad #1", 'M', 2010, 1);
+		Bee mom2= new Bee("Mom #2", 'F', 2010, 2);
+		Bee dad2= new Bee("Mom #2", 'M', 2010, 8);
+		Bee child1= new Bee("Child #1", 2008, 1, mom1);
+		Bee child2= new Bee("Child #2", 2009, 12, mom1, dad1);
+		Bee child3= new Bee("Child #3", 'M', 2089, 5);
+		Bee child4= new Bee("Child #4", 2019, 5, mom2, dad2);
+		Bee child5= new Bee("Child #5", 2765, 6, mom2, dad1);
+		Bee child6= new Bee("Child #6", 5835, 5, mom2, dad1);
 		
+		/* Test isSibling method */
+		assertEquals(child1.isSibling(child2),true);
+		assertEquals(child2.isSibling(child1), true);
+		assertEquals(child3.isSibling(child1), false);
+		assertEquals(child1.isSibling(child3), false);
+		assertEquals(child1.isSibling(mom2), false);
+		assertEquals(mom2.isSibling(child1), false);
+		assertEquals(child4.isSibling(child1), false);
+		assertEquals(child5.isSibling(child1), false);
+		assertEquals(child1.isSibling(child5), false);
+		assertEquals(child5.isSibling(child2), true);
+		assertEquals(child2.isSibling(child5), true);
+		assertEquals(child6.isSibling(child5), true);
+		assertEquals(child5.isSibling(child6), true);
+		assertEquals(child5.isSibling(child3), false);
+		assertEquals(child3.isSibling(child3), false);
+		assertEquals(child4.isSibling(child4), false);
+		assertEquals(mom2.isSibling(mom1), false);
+		assertEquals(dad1.isSibling(mom1), false);
+		
+		/* Test isYounger method */
+		assertEquals(child5.isYounger(child4), true);
+		assertEquals(dad1.isYounger(mom2), false);
+		assertEquals(child1.isYounger(mom1), false);
+		assertEquals(dad2.isYounger(mom2), true);
+			
 	}
 }
