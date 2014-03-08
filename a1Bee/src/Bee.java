@@ -1,5 +1,7 @@
 /* Checked Javadoc output, everything OK */
 
+// testing for Georgia
+
 /** An instance (i.e. object) maintains information about a bee. */
 public class Bee {
 	/* Name of this Bee, length>0 */
