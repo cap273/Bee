@@ -115,6 +115,7 @@ public class BeeTester {
 		Bee child4= new Bee("Child #4", 2019, 5, mom2, dad2);
 		Bee child5= new Bee("Child #5", 2765, 6, mom2, dad1);
 		Bee child6= new Bee("Child #6", 5835, 5, mom2, dad1);
+		Bee child7= null;
 		
 		/* Test isSibling method */
 		assertEquals(child1.isSibling(child2),true);
@@ -135,6 +136,7 @@ public class BeeTester {
 		assertEquals(child4.isSibling(child4), false);
 		assertEquals(mom2.isSibling(mom1), false);
 		assertEquals(dad1.isSibling(mom1), false);
+		assertEquals(child4.isSibling(child7), false);
 		
 		/* Test isYounger method */
 		assertEquals(child5.isYounger(child4), true);
