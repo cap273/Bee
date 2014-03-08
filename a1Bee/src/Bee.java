@@ -1,6 +1,7 @@
 /* Checked Javadoc output, everything OK */
 
 // testing for Georgia
+//testing for Carlos
 
 /** An instance (i.e. object) maintains information about a bee. */
 public class Bee {
